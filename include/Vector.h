@@ -99,7 +99,7 @@ namespace Math
 			template<unsigned char S, typename T, class B>
 			inline static Type Dot(const Vector& vector1, const Vector<S, T, B>& vector2)
 			{
-				return Operator::ArrayOperator< Operator::Size< size, Vector<S, T, B>::size>::Result, Type>::Dot(vector1.Data(), vector2.Data());
+				return Operator::ArrayOperator< Operator::Size< size, Vector<S, T, B>::size>::result, Type>::Dot(vector1.Data(), vector2.Data());
 			}
 
 			// Data //
@@ -153,7 +153,7 @@ namespace Math
 			template <unsigned char S, typename T, class B>
 			inline void Set(const Vector<S, T, B>& vector)
 			{
-				Operator::ArrayOperator< Operator::Size<size, Vector<S, T, B>::size>::Result, Type, T>::Set(Data(), vector.Data());
+				Operator::ArrayOperator< Operator::Size<size, Vector<S, T, B>::size>::result, Type, T>::Set(Data(), vector.Data());
 			}
 
 			// Methods //
@@ -243,7 +243,7 @@ namespace Math
 			template<unsigned char S, typename T, class B>
 			inline Vector& operator=(const Vector<S, T, B>& vector)
 			{
-				Operator::ArrayOperator< Operator::Size<size, Vector<S, T, B>::size>::Result, Type, T>::Set(Data(), vector.Data());
+				Operator::ArrayOperator< Operator::Size<size, Vector<S, T, B>::size>::result, Type, T>::Set(Data(), vector.Data());
 				return *this;
 			}
 
@@ -254,7 +254,7 @@ namespace Math
 			{
 				Vector<S, T, B> vector;
 				//vector.Set<size, Type, VectorBase>(*this);
-				Operator::ArrayOperator< Operator::Size<size, Vector<S, T, B>::size>::Result, Type, T>::Set(vector.Data(), Data());
+				Operator::ArrayOperator< Operator::Size<size, Vector<S, T, B>::size>::result, Type, T>::Set(vector.Data(), Data());
 
 				return vector;
 			}
@@ -264,7 +264,7 @@ namespace Math
 			template <unsigned char S, typename T, class V>
 			inline bool operator==(const Vector<S, T, V>& vector) const
 			{
-				return Operator::ArrayOperator< Operator::Size<size, Vector<S, T, V>::size>::Result, Type, T>::Equals(Data(), vector.Data());
+				return Operator::ArrayOperator< Operator::Size<size, Vector<S, T, V>::size>::result, Type, T>::Equals(Data(), vector.Data());
 			}
 
 			template <unsigned char S, typename T, class V>
@@ -290,7 +290,7 @@ namespace Math
 			inline Vector operator+(const Vector<S, T, V>& vector) const
 			{
 				VectorData data = this->vectorData;
-				Operator::ArrayOperator< Operator::Size<size, Vector<S, T, V>::size>::Result, Type, T>::Add(data.elements, vector.Data());
+				Operator::ArrayOperator< Operator::Size<size, Vector<S, T, V>::size>::result, Type, T>::Add(data.elements, vector.Data());
 
 				return Vector(data);
 			}
@@ -298,7 +298,7 @@ namespace Math
 			template <unsigned char S, typename T, class V>
 			inline Vector& operator+=(const Vector<S, T, V>& vector)
 			{
-				Operator::ArrayOperator< Operator::Size<size, Vector<S, T, V>::size>::Result, Type, T>::Add(Data(), vector.Data());
+				Operator::ArrayOperator< Operator::Size<size, Vector<S, T, V>::size>::result, Type, T>::Add(Data(), vector.Data());
 				return *this;
 			}
 
@@ -306,7 +306,7 @@ namespace Math
 			inline Vector operator-(const Vector<S, T, V>& vector) const
 			{
 				VectorData data = this->vectorData;
-				Operator::ArrayOperator< Operator::Size<size, Vector<S, T, V>::size>::Result, Type, T>::Sub(data.elements, vector.Data());
+				Operator::ArrayOperator< Operator::Size<size, Vector<S, T, V>::size>::result, Type, T>::Sub(data.elements, vector.Data());
 
 				return Vector(data);
 			}
@@ -314,7 +314,7 @@ namespace Math
 			template <unsigned char S, typename T, class V>
 			inline Vector& operator-=(const Vector<S, T, V>& vector)
 			{
-				Operator::ArrayOperator< Operator::Size<size, Vector<S, T, V>::size>::Result, Type, T>::Sub(Data(), vector.Data());
+				Operator::ArrayOperator< Operator::Size<size, Vector<S, T, V>::size>::result, Type, T>::Sub(Data(), vector.Data());
 				return *this;
 			}
 

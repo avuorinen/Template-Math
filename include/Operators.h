@@ -69,7 +69,7 @@ namespace Math
 		template<unsigned char S1, unsigned char S2>
 		struct Size
 		{
-			static const unsigned char Result = S1 > S2 ? S2 : S1;
+			static const unsigned char result = S1 > S2 ? S2 : S1;
 		};
 
 		/// Array Operators ///
