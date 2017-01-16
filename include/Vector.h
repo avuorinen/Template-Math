@@ -99,8 +99,7 @@ namespace Math
 			template<unsigned char S, typename T, class B>
 			inline static Type Dot(const Vector& vector1, const Vector<S, T, B>& vector2)
 			{
-				return Operator::ArrayOperator< Operator::Size< size, Vector<S, T, B>::size>::result, Type>::Dot(vector1.Data(), vector2.Data());
-			}
+				return Operator::ArrayOperator< Operator::Size< size, Vector<S, T, B>::size>::result, Type, T>::Dot(vector1.Data(), vector2.Data());			}
 
 			// Data //
 
@@ -438,6 +437,8 @@ namespace Math
 		template <typename Type>
 		struct Vector2Base
 		{
+			typedef Vector<2, Type, Vector2Base > RealVector;
+
 			union
 			{
 				VectorData<2, Type> vectorData;
@@ -449,6 +450,18 @@ namespace Math
 
 			Vector2Base() {}
 			Vector2Base(VectorData<2, Type> data) : vectorData(data) {}
+			
+			static Type Cross(RealVector& vector, const RealVector& rhs)
+			{
+				return vector.x * rhs.y - vector.y * rhs.x;
+			}
+
+			inline Type Cross(const RealVector& rhs) const
+			{
+				RealVector vector = RealVector({ x, y });
+
+				return Vector2Base::Cross(vector, rhs);
+			}
 
 		};
 
