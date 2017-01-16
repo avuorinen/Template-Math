@@ -2,6 +2,9 @@
 
 ## Example
 ``` C++
+
+#include <Vector.h>
+
 int main(int, char**)
 {
 	Math::Vector2 vector2(1, 2);
